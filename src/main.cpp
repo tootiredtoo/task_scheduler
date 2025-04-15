@@ -1,4 +1,6 @@
 #include "TaskScheduler.h"
+#include "ConsoleLogger.h"
+
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -12,7 +14,8 @@ void simulateWork(const std::string& label, int durationMs) {
 }
 
 int main() {
-    TaskScheduler scheduler(MAX_THREADS);
+    auto logger = std::make_shared<ConsoleLogger>();
+    TaskScheduler scheduler(MAX_THREADS, logger);
 
     scheduler.submit([] { simulateWork("Task A (priority 1)", 300); }, 1);
     scheduler.submit([] { simulateWork("Task B (priority 5)", 100); }, 5);

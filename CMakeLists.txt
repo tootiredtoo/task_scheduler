@@ -38,6 +38,7 @@ enable_testing()
 # ========== Add Tests ==========
 add_executable(TaskSchedulerTests
     tests/TaskSchedulerTests.cpp
+    tests/LoggerTests.cpp
 )
 
 target_link_libraries(TaskSchedulerTests
